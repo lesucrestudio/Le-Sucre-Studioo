@@ -115,6 +115,33 @@
       box-shadow: 0 8px 20px rgba(0,0,0,0.3);
     }
 
+    /* Contact buttons */
+    .contact-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .contact-btn {
+      display: inline-block;
+      padding: 0.8rem 2rem;
+      background: #ff7f50;
+      color: #fff;
+      font-family: 'Dancing Script', cursive;
+      font-size: 1.2rem;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+
+    .contact-btn:hover {
+      background: #b23215;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
     /* Footer */
     footer {
       background: #b23215;
@@ -140,7 +167,8 @@
 <main>
   <section>
     <h2>About Us</h2>
-    <p>Founded by Olha, a Ukrainian pastry artist now based in Canada, Le Sucre Studio is a sanctuary for dessert lovers. Each creation is a story of passion, beauty, and refined taste.</p>
+    <p>Founder murmurla<br>
+    Le Sucre Studio is for those who love sweets. For those who want to succeed in the pastry world. I will teach you how to create a sweet mood for everyone! These courses are not only for beginners. Everyone can find something new and improve their skills. Thanks to our courses, some students are already earning from their own pastries, so don’t wait!</p>
     <a href="#contact" class="btn">Contact Us</a>
   </section>
 
@@ -156,8 +184,10 @@
 
   <section id="contact">
     <h2>Contact</h2>
-    <p>Email: info@lesucrestudio.com</p>
-    <p>Follow us on social media for updates and inspiration.</p>
+    <div class="contact-buttons">
+      <a href="mailto:info.lesucre.studio@gmail.com" class="contact-btn">Email Us</a>
+      <a href="https://www.instagram.com/le.sucre.studio" target="_blank" class="contact-btn">Instagram @le.sucre.studio</a>
+    </div>
   </section>
 </main>
 
