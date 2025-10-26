@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Sucre Studio</title>
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #fff4e6;
+    color: #333;
+}
+header {
+    background-color: #993333;
+    color: white;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+header a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+}
+section {
+    padding: 60px 40px;
+}
+h1, h2 {
+    color: #993333;
+}
+.course {
+    background: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 600px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+.button {
+    background-color: #993333;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 18px;
+    cursor: pointer;
+}
+form input, form button {
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h2>Le Sucre Studio</h2>
+    <nav>
+        <a href="#courses">Courses</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<section id="hero">
+    <h1>Welcome to Le Sucre Studio</h1>
+    <p>Learn the art of pastry online with Olha, a Ukrainian pastry artist based in Canada. Master modern desserts from the comfort of your home.</p>
+</section>
+
+<section id="courses">
+    <h2>Online Courses</h2>
+    <div class="course">
+        <h3>Apricot Sunrise Cheesecake</h3>
+        <p>Learn to make a luxurious apricot cheesecake with caramel, peanut base, and Chantilly cream. Full online course with detailed techniques.</p>
+
+        <!-- Простий Stripe Checkout (Apple Pay підтримується) -->
+        <form action="https://buy.stripe.com/test_XXXXXXXXXXXXXXXX" method="POST">
+            <button type="submit" class="button">
+                Enroll & Pay
+            </button>
+        </form>
+    </div>
+</section>
+
+<section id="about">
+    <h2>About Olha</h2>
+    <p>Olha is a Ukrainian pastry artist who founded Le Sucre Studio in Canada. She believes every dessert tells a story of creativity, comfort, and passion.</p>
+</section>
+
+<section id="contact">
+    <h2>Contact & Registration</h2>
+    <form id="registration-form">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <button type="submit">Register</button>
+    </form>
+</section>
+
+<footer style="background:#993333; color:white; text-align:center; padding:20px;">
+    <p>&copy; 2025 Le Sucre Studio | Follow us on Instagram & Facebook</p>
+</footer>
+
+</body>
+</html>
