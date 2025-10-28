@@ -1,207 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Le Sucre Studio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
-    /* Global styles */
-    body {
-      margin: 0;
-      font-family: 'Playfair Display', serif;
-      background: #fff5f0;
-      color: #4b1e1e;
+    :root{
+      --bg:#fff8f5; --panel:#fff3ee; --accent:#a1563d; --accent-2:#d38e70; --text:#463434; --muted:#6b4e3e; --nav:#f5d6c6;
     }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    /* Header */
-    header {
-      background: linear-gradient(135deg, #b23215, #ff7f50);
-      color: #fff;
-      text-align: center;
-      padding: 5rem 2rem 6rem 2rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    header h1 {
-      font-family: 'Dancing Script', cursive;
-      font-size: 4rem;
-      margin: 0;
-      text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
-    }
-
-    header p {
-      font-size: 1.5rem;
-      margin-top: 1rem;
-      font-style: italic;
-      text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-    }
-
-    /* Decorative shapes */
-    header::after {
-      content: '';
-      position: absolute;
-      bottom: -50px;
-      left: -50px;
-      width: 200px;
-      height: 200px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 50%;
-      transform: rotate(45deg);
-    }
-
-    main {
-      max-width: 1000px;
-      margin: -5rem auto 2rem auto;
-      padding: 0 2rem;
-    }
-
-    section {
-      background: #ffe5d9;
-      margin-bottom: 3rem;
-      padding: 3rem;
-      border-radius: 20px;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-      position: relative;
-      overflow: hidden;
-    }
-
-    section::before {
-      content: '';
-      position: absolute;
-      top: -20px;
-      right: -20px;
-      width: 150px;
-      height: 150px;
-      background: rgba(255,127,80,0.15);
-      border-radius: 50%;
-    }
-
-    h2 {
-      font-family: 'Dancing Script', cursive;
-      font-size: 2.8rem;
-      margin-bottom: 1rem;
-      color: #a63712;
-    }
-
-    p {
-      font-size: 1.1rem;
-      line-height: 1.7;
-    }
-
-    /* Buttons */
-    .btn {
-      display: inline-block;
-      padding: 0.8rem 2rem;
-      margin-top: 1rem;
-      background: #b23215;
-      color: #fff;
-      font-family: 'Dancing Script', cursive;
-      font-size: 1.2rem;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      transition: all 0.3s ease;
-    }
-
-    .btn:hover {
-      background: #ff7f50;
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    }
-
-    /* Contact buttons */
-    .contact-buttons {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .contact-btn {
-      display: inline-block;
-      padding: 0.8rem 2rem;
-      background: #ff7f50;
-      color: #fff;
-      font-family: 'Dancing Script', cursive;
-      font-size: 1.2rem;
-      border-radius: 10px;
-      text-align: center;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      transition: all 0.3s ease;
-    }
-
-    .contact-btn:hover {
-      background: #b23215;
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
-    }
-
-    /* Footer */
-    footer {
-      background: #b23215;
-      color: #fff;
-      text-align: center;
-      padding: 3rem 2rem;
-    }
-
-    footer p {
-      margin: 0;
-      font-size: 1rem;
-      letter-spacing: 1px;
-    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:'Marcellus',serif;background:var(--bg);color:var(--text);scroll-behavior:smooth}
+    /* NAV */
+    .topbar{position:sticky;top:0;z-index:10;background:var(--nav);box-shadow:0 2px 8px rgba(0,0,0,.08)}
+    nav{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:1.2rem;padding:12px 16px}
+    .brand{font-family:'Playfair Display',serif;font-weight:700;font-size:1.25rem;color:#5a3a2f;margin-right:auto;text-decoration:none}
+    .navlink{color:#633b2e;text-decoration:none;font-weight:600}
+    .navlink:hover{color:var(--accent)}
+    .buy-btn{background:var(--accent);color:#fff;padding:.7rem 1.1rem;border-radius:8px;text-decoration:none;font-weight:700}
+    .buy-btn:hover{background:var(--accent-2)}
+    /* HERO */
+    header{background:linear-gradient(135deg,#d6b8a1,#f3d2c1);text-align:center;padding:72px 20px}
+    header h1{font-family:'Playfair Display',serif;font-size:3rem;margin:0;color:#3a2a2a}
+    header p{margin:.8rem 0 0;color:var(--muted)}
+    main{max-width:1000px;margin:32px auto;padding:0 16px}
+    section{background:var(--panel);margin-bottom:28px;padding:28px;border-radius:18px;box-shadow:0 8px 18px rgba(0,0,0,.08)}
+    h2{font-family:'Playfair Display',serif;font-size:2rem;color:#804b37;margin:0 0 .75rem}
+    p{line-height:1.7}
+    ul{margin:.25rem 0 1rem 1rem}
+    .cta{display:inline-block;margin-top:.5rem;background:var(--accent);color:#fff;padding:.9rem 1.6rem;border-radius:10px;text-decoration:none;font-weight:700}
+    .cta:hover{background:var(--accent-2)}
+    footer{background:var(--accent);color:#fff;text-align:center;padding:28px 16px;margin-top:32px}
+    small{opacity:.9}
   </style>
 </head>
 <body>
 
+<div class="topbar">
+  <nav>
+    <a class="brand" href="#">Le Sucre Studio</a>
+    <a class="navlink" href="#buy">Buy Recipes</a>
+    <a class="navlink" href="#about">About Us</a>
+    <a class="navlink" href="#contact">Contact</a>
+    <a class="buy-btn" href="https://square.link/u/JB1g8Mhq" target="_blank" rel="noopener">Buy Now</a>
+  </nav>
+</div>
+
 <header>
-  <h1>Le Sucre Studio</h1>
-  <p>Where European elegance meets Canadian warmth</p>
+  <h1>European elegance. Canadian warmth.</h1>
+  <p>Signature cheesecake recipes crafted with balance, elegance, and heart.</p>
 </header>
 
 <main>
-  <section>
+  <section id="buy">
+    <h2>Cheesecake Recipe Bundle 🍰</h2>
+    <p>Get <strong>three premium PDFs</strong> with precise grams, pro notes and assembly flow:</p>
+    <ul>
+      <li>🌰 Sunny Peanut Apricot</li>
+      <li>🍎 Autumn Apple</li>
+      <li>🍒 Cherry Garden</li>
+    </ul>
+    <a class="cta" href="https://square.link/u/JB1g8Mhq" target="_blank" rel="noopener">Buy Now — $29.99</a>
+    <p><small>Secure checkout powered by Square</small></p>
+  </section>
+
+  <section id="about">
     <h2>About Us</h2>
-    <p>Founder murmurla<br>
-    Le Sucre Studio is for those who love sweets. For those who want to succeed in the pastry world. I will teach you how to create a sweet mood for everyone! These courses are not only for beginners. Everyone can find something new and improve their skills. Thanks to our courses, some students are already earning from their own pastries, so don’t wait!</p>
-    <a href="#contact" class="btn">Contact Us</a>
-  </section>
-
-  <section>
-    <h2>Our Philosophy</h2>
-    <p>We craft desserts that captivate both the eyes and the palate. Every pastry is designed with balance, elegance, and heart, combining modern techniques with timeless flavors.</p>
-  </section>
-
-  <section>
-    <h2>Gallery</h2>
-    <p>Explore our creations, from classic favorites to signature desserts. Each piece is a work of art meant to inspire and delight.</p>
+    <p><strong>Founder:</strong> murmurla</p>
+    <p>Le Sucre Studio is for those who love sweets and want to master the art of pastry. Our lessons blend modern techniques with timeless taste — helping beginners and pros create elegant desserts and even turn passion into income.</p>
   </section>
 
   <section id="contact">
     <h2>Contact</h2>
-    <div class="contact-buttons">
-      <a href="mailto:info.lesucre.studio@gmail.com" class="contact-btn">Email Us</a>
-      <a href="https://www.instagram.com/le.sucre.studio" target="_blank" class="contact-btn">Instagram @le.sucre.studio</a>
-    </div>
+    <p><a class="cta" href="mailto:info.lesucre.studio@gmail.com">Email Us</a></p>
+    <p><a class="cta" href="https://www.instagram.com/le.sucre.studio" target="_blank" rel="noopener">Instagram @le.sucre.studio</a></p>
   </section>
 </main>
 
 <footer>
-  <p>© 2025 Le Sucre Studio. All Rights Reserved.</p>
+  <small>© 2025 Le Sucre Studio — All Rights Reserved</small>
 </footer>
-<div style="text-align:center; font-family:sans-serif; padding:50px;">
-  <h1>Learn to make cheesecakes quickly! 🍰</h1>
-  <p>Get <strong>all three delicious recipes</strong>:</p>
-  <ul style="list-style:none; padding:0; font-size:18px;">
-    <li>🍒 Cherry Garden</li>
-    <li>🍎 Autumn Apple</li>
-    <li>🌰 Sunny Pistachio Apricot</li>
-  </ul>
-  <p>With this set, you’ll master cheesecake making in no time!</p>
+
 </body>
 </html>
