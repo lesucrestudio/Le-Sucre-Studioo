@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Le Sucre — Signature</title>
+<title>Le Sucre — Signature Recipe Shop</title>
 <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -19,7 +19,6 @@
     color:var(--txt); font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial
   }
   a{color:inherit;text-decoration:none}
-
   .grid{
     position:fixed; inset:0; z-index:-1;
     background-image:
@@ -29,9 +28,7 @@
     mask-image: radial-gradient(1000px 600px at 50% -10%, #000 75%, transparent 100%);
     opacity:.35;
   }
-
   .container{max-width:820px;margin:0 auto;padding:0 16px}
-
   .topbar{position:sticky;top:0;background:rgba(16,16,20,.75);backdrop-filter:blur(8px);
           border-bottom:1px solid rgba(255,255,255,.06); z-index:10}
   nav{display:flex;align-items:center;gap:12px;padding:10px 14px}
@@ -42,7 +39,6 @@
   .buy{margin-left:auto;background:linear-gradient(90deg,var(--accent),var(--accent2));
        color:#000; font-weight:800; box-shadow:0 8px 24px rgba(198,255,0,.25), inset 0 0 18px rgba(255,255,255,.35)}
   .buy:hover{transform:translateY(-2px)}
-
   header{margin:36px auto 0}
   .hero{border:1px solid rgba(255,255,255,.08); background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
         border-radius:20px; overflow:hidden; position:relative}
@@ -50,22 +46,23 @@
         mix-blend-mode:screen; animation:scan 5s linear infinite; pointer-events:none}
   @keyframes scan{0%{transform:translateY(-100%)}100%{transform:translateY(100%)}}
   .hero-inner{padding:34px 18px 26px; text-align:center}
-  h1{font-family:'Audiowide',cursive; font-size:34px; margin:8px 0 4px}
-  .sub{color:#bfc3ff; opacity:.9; margin:6px 0 0; font-size:18px; letter-spacing:0.3px;}
-
+  .logo{width:240px;max-width:85%}
+  h1{font-family:'Audiowide',cursive; font-size:30px; margin:8px 0}
+  .sub{color:#bfc3ff; opacity:.9; margin:6px 0 0}
   main{margin:24px auto}
   section{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));
           border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:22px; margin-bottom:18px}
   h2{font-family:'Audiowide',cursive;font-size:20px;margin:0 0 8px;color:#eaeaff}
   ul{margin:8px 0 0 18px}
-
   .marq{overflow:hidden; border-block:1px solid rgba(255,255,255,.08); margin:18px 0}
   .marq .row{display:flex; gap:22px; white-space:nowrap; padding:8px 0; animation:slide 18s linear infinite}
   .chip{padding:7px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.14);
         background:linear-gradient(180deg,#16161d,#0f0f15); color:#d6ffe2; font-size:14px}
   @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
   footer{text-align:center;padding:22px;color:#a9adc6; opacity:.9}
+  .cta{display:inline-block;margin-top:6px;padding:10px 16px;border-radius:12px;
+       background:linear-gradient(90deg,var(--pink),var(--accent2)); color:#0b0b0f; font-weight:800; text-decoration:none}
+  .cta:hover{transform:translateY(-2px)}
 </style>
 </head>
 <body>
@@ -75,10 +72,9 @@
   <div class="container">
     <nav>
       <div class="brand">LE SUCRE</div>
-      <a class="pill" href="#buy">Buy</a>
+      <a class="pill" href="#buy">Shop</a>
       <a class="pill" href="#about">About</a>
       <a class="pill" href="#contact">Contact</a>
-      <a class="pill buy" href="https://square.link/u/JB1g8Mhq" target="_blank" rel="noopener">Buy Now</a>
     </nav>
   </div>
 </div>
@@ -88,24 +84,63 @@
     <span class="scan"></span>
     <div class="hero-inner">
       <h1>LE SUCRE</h1>
-      <p class="sub">Modern dessert recipes for pastry chefs and beginners</p>
+      <p class="sub">Modern dessert recipes for pastry chefs & beginners 🍰🧁</p>
     </div>
   </div>
 </header>
 
 <main class="container">
   <section id="buy">
-    <h2>What you get</h2>
-    <p>One premium PDF presentation with exact grams, professional notes, step-by-step assembly and an elegant layout. Includes:</p>
-    <ul>
-      <li>🌰 Sunny Peanut Apricot</li>
-      <li>🍎 Autumn Apple</li>
-      <li>🍒 Cherry Garden</li>
-    </ul>
+    <h2>Shop Recipes</h2>
+    <p>Choose your favorite presentation — or get the full bundle with all premium recipes. Each PDF includes exact grams, methods and professional pastry notes.</p>
 
-    <p style="margin-top:10px;opacity:.9"><em>Digital delivery after purchase via email.</em></p>
+    <style>
+      .cards{display:grid;grid-template-columns:1fr;gap:16px;margin-top:12px}
+      .card{
+        background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));
+        border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:18px;
+      }
+      .card h3{margin:0 0 6px; font-size:18px}
+      .meta{opacity:.85; margin:6px 0 12px}
+      .price{display:inline-block; font-weight:800; opacity:.95; margin-right:10px}
+    </style>
 
-    <div class="marq" aria-hidden="true">
+    <div class="cards">
+      <!-- Product 1 -->
+      <div class="card">
+        <h3>Signature Cheesecakes — PDF</h3>
+        <p class="meta">Three elegant cheesecake recipes: Sunny Peanut Apricot · Autumn Apple · Cherry Garden. Detailed, professional and beautiful.</p>
+        <div>
+          <span class="price">$29.99</span>
+          <a class="cta" href="https://square.link/u/JB1g8Mhq" target="_blank" rel="noopener">Buy Now</a>
+        </div>
+        <p style="opacity:.8;margin-top:8px"><em>PDF delivered via email after purchase.</em></p>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="card">
+        <h3>Signature Muffins — PDF</h3>
+        <p class="meta">If you want the recipe for delicious muffins — this one’s for you 🫐🍓. Includes Berry Muffins with crumble & Raspberry Muffins with cocoa and almond flakes.</p>
+        <div>
+          <span class="price">$17.99</span>
+          <a class="cta" href="https://square.link/u/kg4esfNT" target="_blank" rel="noopener">Buy Now</a>
+        </div>
+        <p style="opacity:.8;margin-top:8px"><em>PDF delivered via email after purchase.</em></p>
+      </div>
+
+      <!-- Product 3: Bundle -->
+      <div class="card">
+        <h3>Full Bundle — Both PDFs</h3>
+        <p class="meta">Get the full Le Sucre experience — all three cheesecakes & both muffin recipes in one elegant bundle.</p>
+        <div>
+          <span class="price">$39.99</span>
+          <a class="cta" href="https://square.link/u/kuP21A9B" target="_blank" rel="noopener">Buy Bundle</a>
+        </div>
+        <p style="opacity:.8;margin-top:8px"><em>All PDFs delivered via email after purchase.</em></p>
+      </div>
+    </div>
+
+    <div class="marq" aria-hidden="true" style="margin-top:16px;">
       <div class="row">
         <span class="chip">Pies</span>
         <span class="chip">Cheesecakes</span>
@@ -113,7 +148,6 @@
         <span class="chip">Cookies</span>
         <span class="chip">Muffins</span>
         <span class="chip">Chocolate</span>
-
         <span class="chip">Pies</span>
         <span class="chip">Cheesecakes</span>
         <span class="chip">Cakes</span>
@@ -122,15 +156,12 @@
         <span class="chip">Chocolate</span>
       </div>
     </div>
-
-    <p><a class="cta" href="https://square.link/u/JB1g8Mhq" target="_blank" rel="noopener">Checkout with Square</a></p>
   </section>
 
   <section id="about">
-    <h2>About Us</h2>
-    <p><strong>Le Sucre</strong> is a boutique pastry studio shaping modern desserts with European finesse and clean, balanced flavors. We believe a great recipe should be precise, beautiful, and achievable at home — without losing the magic.</p>
-    <p>Our signature cheesecakes are engineered for consistency: low-temperature baking, controlled textures, and clear assembly logic. Each presentation includes exact grams, practical notes, and professional techniques refined for home ovens and small studios.</p>
-    <p>Whether you’re a beginner or growing a pastry business, our goal is the same: reliable results, elegant aesthetics, and desserts that tell a story.</p>
+    <h2>About Le Sucre</h2>
+    <p>Le Sucre Studio was founded by <strong>murmurla</strong> — a pastry artist passionate about combining European precision with modern aesthetics. Our digital recipe collections are designed to inspire, teach and help pastry lovers create professional-level desserts at home or in their own studios.</p>
+    <p>Every Le Sucre recipe is a reflection of balance, texture and emotion. Whether you’re a beginner or a working pastry chef, you’ll find recipes that elevate your craft with flavor, harmony and visual beauty.</p>
   </section>
 
   <section id="contact">
