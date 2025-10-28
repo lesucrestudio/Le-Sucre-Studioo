@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Le Sucre — Signature Recipe Shop</title>
 
-<!-- Теплі «кондитерські» шрифти -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<!-- ЄДИНИЙ ШРИФТ (Playfair Display) -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&display=swap" rel="stylesheet">
 
 <style>
   :root{
@@ -37,8 +37,7 @@
   html,body{margin:0;height:100%}
   body{
     color:var(--ink);
-    font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial;
-    /* Ніжний фон: вершково-ягідні розтяжки + «насіння» полуниці */
+    font-family:'Playfair Display', serif; /* ОДИН ШРИФТ ДЛЯ ВСЬОГО */
     background:
       radial-gradient(1200px 600px at 10% -10%, rgba(255, 107, 129, .08), transparent 60%),
       radial-gradient(1000px 700px at 110% 10%, rgba(255, 232, 236, .9), transparent 70%),
@@ -46,18 +45,43 @@
     position:relative;
   }
 
-  /* Легка «насіннєва» сіточка */
+  a{color:inherit;text-decoration:none}
+  .container{max-width:860px;margin:0 auto;padding:0 16px}
+
+  /* Делікатна «насіннєва» сіточка */
   .seeds{
-    position:fixed; inset:0; z-index:-1; opacity:.25; pointer-events:none;
+    position:fixed; inset:0; z-index:-2; opacity:.22; pointer-events:none;
     background-image:
       radial-gradient(circle at 1px 1px, rgba(255,107,129,.25) 1.2px, transparent 1.3px);
     background-size:28px 28px;
     mask-image: radial-gradient(1000px 700px at 50% -10%, #000 65%, transparent 100%);
   }
 
-  a{color:inherit;text-decoration:none}
+  /* ЛЕГКІ АНІМАЦІЙНІ ІКОНКИ 🍓🍫 */
+  .float-icons{
+    position:fixed; inset:0; pointer-events:none; z-index:-1; opacity:.9;
+  }
+  .float-icons span{
+    position:absolute; font-size:20px; filter:drop-shadow(0 4px 8px rgba(199,117,106,.18));
+    animation:rise 12s linear infinite, sway 5s ease-in-out infinite;
+    will-change: transform;
+  }
+  /* Кілька випадкових позицій/затримок */
+  .float-icons span:nth-child(1){left:8%;  bottom:-10%; animation-delay:0s, .6s}
+  .float-icons span:nth-child(2){left:22%; bottom:-14%; animation-delay:1.4s, .2s}
+  .float-icons span:nth-child(3){left:38%; bottom:-12%; animation-delay:2.6s, 1s}
+  .float-icons span:nth-child(4){left:56%; bottom:-16%; animation-delay:3.8s, .4s}
+  .float-icons span:nth-child(5){left:74%; bottom:-10%; animation-delay:5.2s, 1.2s}
+  .float-icons span:nth-child(6){left:88%; bottom:-18%; animation-delay:6.4s, .8s}
 
-  .container{max-width:860px;margin:0 auto;padding:0 16px}
+  @keyframes rise{
+    from{transform:translateY(0) scale(1)}
+    to  {transform:translateY(-130vh) scale(1.05)}
+  }
+  @keyframes sway{
+    0%,100%{transform:translateX(0) rotate(0deg)}
+    50%    {transform:translateX(10px) rotate(4deg)}
+  }
 
   .topbar{
     position:sticky; top:0; z-index:10;
@@ -69,15 +93,14 @@
 
   .brand{
     display:flex;align-items:center;gap:10px;
-    font-family:'Playfair Display', serif; font-weight:800; letter-spacing:.4px;
-    color:#a24b57;
+    font-weight:800; letter-spacing:.4px; color:#a24b57;
   }
 
   .pill{
     padding:10px 14px;border-radius:999px;
     background:linear-gradient(180deg, var(--panel), var(--panel-2));
     border:1px solid var(--line); color:var(--ink);
-    font-weight:600;
+    font-weight:700;
     box-shadow:var(--shadow-2);
     transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease;
   }
@@ -86,7 +109,6 @@
     border-color:#f2cdd2;
     box-shadow:0 0 0 4px rgba(255, 107, 129, .12);
   }
-
   .buy{
     margin-left:auto;
     background:linear-gradient(90deg, var(--straw), var(--straw-2));
@@ -113,11 +135,10 @@
 
   .hero-inner{padding:34px 18px 26px; text-align:center}
   h1{
-    font-family:'Playfair Display', serif;
     font-size:34px; margin:6px 0 4px;
-    color:#b34f5d; letter-spacing:.5px;
+    color:#b34f5d; letter-spacing:.5px; font-weight:800;
   }
-  .sub{color:var(--ink-soft); opacity:.95; margin:6px 0 0}
+  .sub{color:var(--ink-soft); opacity:.95; margin:6px 0 0; font-weight:400}
 
   main{margin:26px auto}
   section{
@@ -126,8 +147,24 @@
     box-shadow:var(--shadow-2);
   }
   h2{
-    font-family:'Playfair Display', serif; font-size:22px; margin:0 0 8px; color:#a24b57;
+    font-size:22px; margin:0 0 8px; color:#a24b57; position:relative; padding-left:34px;
   }
+  /* Маленькі бейджі-іконки у заголовків */
+  h2::before{
+    content:"🍓";
+    position:absolute; left:0; top:2px; font-size:20px;
+    animation:pop 2.6s ease-in-out infinite;
+    filter:drop-shadow(0 2px 6px rgba(199,117,106,.18));
+  }
+  /* Для наступних секцій міняємо на шоколадку */
+  #about h2::before{content:"🍫"}
+  #contact h2::before{content:"🍓"}
+
+  @keyframes pop{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-2px)}
+  }
+
   ul{margin:8px 0 0 18px}
 
   /* Картки товарів */
@@ -138,7 +175,7 @@
     border:1px solid var(--line); border-radius:var(--radius); padding:18px;
     box-shadow:var(--shadow-2);
   }
-  .card h3{margin:0 0 6px; font-size:18px; color:#a24b57; font-family:'Playfair Display', serif}
+  .card h3{margin:0 0 6px; font-size:18px; color:#a24b57; font-weight:700}
   .meta{opacity:.9; margin:6px 0 12px; color:var(--ink-soft)}
   .price{display:inline-block; font-weight:800; opacity:.95; margin-right:10px; color:#8c4a3a}
 
@@ -170,6 +207,16 @@
 <body>
 
 <div class="seeds"></div>
+
+<!-- ЛЕГКІ ПЛАВНІ ІКОНКИ, ЩО ПІДНІМАЮТЬСЯ ВГОРУ -->
+<div class="float-icons" aria-hidden="true">
+  <span>🍓</span>
+  <span>🍫</span>
+  <span>🍓</span>
+  <span>🍫</span>
+  <span>🍓</span>
+  <span>🍫</span>
+</div>
 
 <div class="topbar">
   <div class="container">
@@ -203,7 +250,7 @@
         <h3>Signature Cheesecakes — PDF</h3>
         <p class="meta">Three elegant cheesecake recipes: Sunny Peanut Apricot · Autumn Apple · Cherry Garden. Detailed, professional and beautiful.</p>
         <div>
-          <span class="price">$29.99</span>
+          <span class="price">$15.99</span>
           <a class="cta" href="https://square.link/u/JB1g8Mhq" target="_blank" rel="noopener">Buy Now</a>
         </div>
         <p style="opacity:.85;margin-top:8px"><em>PDF delivered via email after purchase.</em></p>
@@ -214,7 +261,7 @@
         <h3>Signature Muffins — PDF</h3>
         <p class="meta">If you want the recipe for delicious muffins — this one’s for you 🫐🍓. Includes Berry Muffins with crumble & Raspberry Muffins with cocoa and almond flakes.</p>
         <div>
-          <span class="price">$12.99</span>
+          <span class="price">$7.99</span>
           <a class="cta" href="https://square.link/u/kg4esfNT" target="_blank" rel="noopener">Buy Now</a>
         </div>
         <p style="opacity:.85;margin-top:8px"><em>PDF delivered via email after purchase.</em></p>
@@ -225,7 +272,7 @@
         <h3>Full Bundle — Both PDFs</h3>
         <p class="meta">Get the full Le Sucre experience — all three cheesecakes & both muffin recipes in one elegant bundle.</p>
         <div>
-          <span class="price">$39.99</span>
+          <span class="price">$19.99</span>
           <a class="cta" href="https://square.link/u/kuP21A9B" target="_blank" rel="noopener">Buy Bundle</a>
         </div>
         <p style="opacity:.85;margin-top:8px"><em>All PDFs delivered via email after purchase.</em></p>
@@ -252,8 +299,8 @@
 
   <section id="about">
     <h2>About Le Sucre</h2>
-    <p>Le Sucre Studio was founded by <strong>murmurla</strong> — a pastry artist passionate about combining European precision with modern aesthetics. Our digital recipe collections are designed to inspire, teach and help pastry lovers create professional-level desserts at home or in their own studios.</p>
-    <p>Every Le Sucre recipe is a reflection of balance, texture and emotion. Whether you’re a beginner or a working pastry chef, you’ll find recipes that elevate your craft with flavor, harmony and visual beauty.If you’ve completed your purchase, please send us your email and payment confirmation — we’ll personally deliver the PDF recipe files straight to your inbox with care and love 💌✨</p>
+    <p>Le Sucre Studio was founded by <strong>Lola Deineha</strong> — a pastry artist passionate about combining European precision with modern aesthetics. Our digital recipe collections are designed to inspire, teach and help pastry lovers create professional-level desserts at home or in their own studios.</p>
+    <p>Every Le Sucre recipe is a reflection of balance, texture and emotion. Whether you’re a beginner or a working pastry chef, you’ll find recipes that elevate your craft with flavor, harmony and visual beauty. If you’ve completed your purchase, please send us your email and payment confirmation — we’ll personally deliver the PDF recipe files straight to your inbox with care and love 💌✨</p>
   </section>
 
   <section id="contact">
