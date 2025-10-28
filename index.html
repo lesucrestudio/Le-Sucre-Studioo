@@ -4,69 +4,172 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Le Sucre — Signature Recipe Shop</title>
-<link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+<!-- Теплі «кондитерські» шрифти -->
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
 <style>
   :root{
-    --bg:#0a0a0a; --panel:#101014; --grid:#1f1f25; --accent:#c6ff00; --accent2:#00f0ff; --pink:#ff67d4; --txt:#e9e9ef;
+    /* Полунично-бежева палітра */
+    --bg:#fff8f2;          /* ванільний фон */
+    --panel:#fff3ea;       /* кремовий блок */
+    --panel-2:#fff7f2;     /* ще світліший крем */
+    --ink:#5b3a2f;         /* м’який шоколадний текст */
+    --ink-soft:#7a5b4d;
+
+    --straw:#ff6b81;       /* стигла полуниця */
+    --straw-2:#ff8fa3;     /* світліша полуниця */
+    --rose:#ffd8e1;        /* рожевий крем */
+    --rose-2:#ffe6ec;      /* дуже світлий рожевий */
+    --cream:#ffe9d6;       /* крем-карамель */
+    --beige:#f8e6d5;       /* бісквіт */
+
+    --line:#e9d8cd;        /* делікатні бордюри */
+    --chip:#fbeeed;
+
+    --shadow: 0 8px 24px rgba(199, 117, 106, .15);
+    --shadow-2: 0 4px 16px rgba(199, 117, 106, .12);
+    --radius: 16px;
+    --radius-lg: 22px;
   }
+
   *{box-sizing:border-box}
   html,body{margin:0;height:100%}
   body{
+    color:var(--ink);
+    font-family:'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial;
+    /* Ніжний фон: вершково-ягідні розтяжки + «насіння» полуниці */
     background:
-      radial-gradient(1200px 600px at 10% -10%,rgba(198,255,0,.15),transparent),
-      radial-gradient(800px 500px at 110% 10%,rgba(0,240,255,.12),transparent),
-      linear-gradient(180deg,#0a0a0a,#0b0b0f 60%,#09090c);
-    color:var(--txt); font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial
+      radial-gradient(1200px 600px at 10% -10%, rgba(255, 107, 129, .08), transparent 60%),
+      radial-gradient(1000px 700px at 110% 10%, rgba(255, 232, 236, .9), transparent 70%),
+      linear-gradient(180deg, #fffaf6, var(--bg) 40%, #fff6f1 100%);
+    position:relative;
   }
-  a{color:inherit;text-decoration:none}
-  .grid{
-    position:fixed; inset:0; z-index:-1;
+
+  /* Легка «насіннєва» сіточка */
+  .seeds{
+    position:fixed; inset:0; z-index:-1; opacity:.25; pointer-events:none;
     background-image:
-      linear-gradient(var(--grid) 1px, transparent 1px),
-      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-    background-size:42px 42px, 42px 42px;
-    mask-image: radial-gradient(1000px 600px at 50% -10%, #000 75%, transparent 100%);
-    opacity:.35;
+      radial-gradient(circle at 1px 1px, rgba(255,107,129,.25) 1.2px, transparent 1.3px);
+    background-size:28px 28px;
+    mask-image: radial-gradient(1000px 700px at 50% -10%, #000 65%, transparent 100%);
   }
-  .container{max-width:820px;margin:0 auto;padding:0 16px}
-  .topbar{position:sticky;top:0;background:rgba(16,16,20,.75);backdrop-filter:blur(8px);
-          border-bottom:1px solid rgba(255,255,255,.06); z-index:10}
-  nav{display:flex;align-items:center;gap:12px;padding:10px 14px}
-  .brand{display:flex;align-items:center;gap:10px;font-family:'Audiowide',cursive;letter-spacing:.4px}
-  .pill{padding:10px 14px;border-radius:999px;background:linear-gradient(180deg,#181820,#101017);
-        border:1px solid rgba(255,255,255,.1); color:#cfd3ff; font-weight:600}
-  .pill:hover{border-color:var(--accent); box-shadow:0 0 0 3px rgba(198,255,0,.12)}
-  .buy{margin-left:auto;background:linear-gradient(90deg,var(--accent),var(--accent2));
-       color:#000; font-weight:800; box-shadow:0 8px 24px rgba(198,255,0,.25), inset 0 0 18px rgba(255,255,255,.35)}
+
+  a{color:inherit;text-decoration:none}
+
+  .container{max-width:860px;margin:0 auto;padding:0 16px}
+
+  .topbar{
+    position:sticky; top:0; z-index:10;
+    background:rgba(255,247,242,.85);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{display:flex;align-items:center;gap:10px;padding:12px 14px}
+
+  .brand{
+    display:flex;align-items:center;gap:10px;
+    font-family:'Playfair Display', serif; font-weight:800; letter-spacing:.4px;
+    color:#a24b57;
+  }
+
+  .pill{
+    padding:10px 14px;border-radius:999px;
+    background:linear-gradient(180deg, var(--panel), var(--panel-2));
+    border:1px solid var(--line); color:var(--ink);
+    font-weight:600;
+    box-shadow:var(--shadow-2);
+    transition:transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+  }
+  .pill:hover{
+    transform:translateY(-1px);
+    border-color:#f2cdd2;
+    box-shadow:0 0 0 4px rgba(255, 107, 129, .12);
+  }
+
+  .buy{
+    margin-left:auto;
+    background:linear-gradient(90deg, var(--straw), var(--straw-2));
+    color:#fff; font-weight:800;
+    box-shadow:0 10px 28px rgba(255,107,129,.28), inset 0 0 18px rgba(255,255,255,.35);
+  }
   .buy:hover{transform:translateY(-2px)}
+
   header{margin:36px auto 0}
-  .hero{border:1px solid rgba(255,255,255,.08); background:linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.02));
-        border-radius:20px; overflow:hidden; position:relative}
-  .scan{position:absolute; inset:0; background:linear-gradient( to bottom, transparent 0 40%, rgba(255,255,255,.06) 40% 60%, transparent 60% 100% );
-        mix-blend-mode:screen; animation:scan 5s linear infinite; pointer-events:none}
+  .hero{
+    border:1px solid var(--line);
+    background:
+      linear-gradient(180deg, rgba(255,216,225,.55), rgba(255,228,220,.5)),
+      linear-gradient(180deg, rgba(255,255,255,.7), rgba(255,255,255,.35));
+    border-radius:var(--radius-lg); overflow:hidden; position:relative;
+    box-shadow:var(--shadow);
+  }
+  .scan{
+    position:absolute; inset:0;
+    background:linear-gradient(to bottom, transparent 0 40%, rgba(255,255,255,.55) 40% 60%, transparent 60% 100%);
+    mix-blend-mode:screen; animation:scan 6s linear infinite; pointer-events:none
+  }
   @keyframes scan{0%{transform:translateY(-100%)}100%{transform:translateY(100%)}}
+
   .hero-inner{padding:34px 18px 26px; text-align:center}
-  .logo{width:240px;max-width:85%}
-  h1{font-family:'Audiowide',cursive; font-size:30px; margin:8px 0}
-  .sub{color:#bfc3ff; opacity:.9; margin:6px 0 0}
-  main{margin:24px auto}
-  section{background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));
-          border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:22px; margin-bottom:18px}
-  h2{font-family:'Audiowide',cursive;font-size:20px;margin:0 0 8px;color:#eaeaff}
+  h1{
+    font-family:'Playfair Display', serif;
+    font-size:34px; margin:6px 0 4px;
+    color:#b34f5d; letter-spacing:.5px;
+  }
+  .sub{color:var(--ink-soft); opacity:.95; margin:6px 0 0}
+
+  main{margin:26px auto}
+  section{
+    background:linear-gradient(180deg, var(--panel), var(--panel-2));
+    border:1px solid var(--line); border-radius:var(--radius); padding:22px; margin-bottom:18px;
+    box-shadow:var(--shadow-2);
+  }
+  h2{
+    font-family:'Playfair Display', serif; font-size:22px; margin:0 0 8px; color:#a24b57;
+  }
   ul{margin:8px 0 0 18px}
-  .marq{overflow:hidden; border-block:1px solid rgba(255,255,255,.08); margin:18px 0}
-  .marq .row{display:flex; gap:22px; white-space:nowrap; padding:8px 0; animation:slide 18s linear infinite}
-  .chip{padding:7px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.14);
-        background:linear-gradient(180deg,#16161d,#0f0f15); color:#d6ffe2; font-size:14px}
+
+  /* Картки товарів */
+  .cards{display:grid;grid-template-columns:1fr;gap:16px;margin-top:12px}
+  @media (min-width:760px){ .cards{grid-template-columns:1fr 1fr} }
+  .card{
+    background:linear-gradient(180deg, #fff, var(--rose-2));
+    border:1px solid var(--line); border-radius:var(--radius); padding:18px;
+    box-shadow:var(--shadow-2);
+  }
+  .card h3{margin:0 0 6px; font-size:18px; color:#a24b57; font-family:'Playfair Display', serif}
+  .meta{opacity:.9; margin:6px 0 12px; color:var(--ink-soft)}
+  .price{display:inline-block; font-weight:800; opacity:.95; margin-right:10px; color:#8c4a3a}
+
+  .cta{
+    display:inline-block; margin-top:6px; padding:10px 16px; border-radius:12px;
+    background:linear-gradient(90deg, var(--straw), var(--straw-2));
+    color:#fff; font-weight:800; text-decoration:none;
+    box-shadow:0 8px 20px rgba(255,107,129,.22);
+    transition:transform .15s ease, box-shadow .2s ease;
+  }
+  .cta:hover{
+    transform:translateY(-2px);
+    box-shadow:0 10px 26px rgba(255,107,129,.28);
+  }
+
+  /* Маркі */
+  .marq{overflow:hidden; border-block:1px solid var(--line); margin:18px 0}
+  .marq .row{display:flex; gap:18px; white-space:nowrap; padding:8px 0; animation:slide 18s linear infinite}
   @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-  footer{text-align:center;padding:22px;color:#a9adc6; opacity:.9}
-  .cta{display:inline-block;margin-top:6px;padding:10px 16px;border-radius:12px;
-       background:linear-gradient(90deg,var(--pink),var(--accent2)); color:#0b0b0f; font-weight:800; text-decoration:none}
-  .cta:hover{transform:translateY(-2px)}
+  .chip{
+    padding:7px 12px;border-radius:999px;border:1px solid #f2cdd2;
+    background:linear-gradient(180deg, var(--chip), #fff);
+    color:#a14a58; font-size:14px; box-shadow:0 2px 8px rgba(199,117,106,.10);
+  }
+
+  footer{text-align:center;padding:22px;color:#8b6a5d; opacity:.95}
 </style>
 </head>
 <body>
-<div class="grid"></div>
+
+<div class="seeds"></div>
 
 <div class="topbar">
   <div class="container">
@@ -74,7 +177,7 @@
       <div class="brand">LE SUCRE</div>
       <a class="pill" href="#buy">Shop</a>
       <a class="pill" href="#about">About</a>
-      <a class="pill" href="#contact">Contact</a>
+      <a class="pill buy" href="#contact">Contact</a>
     </nav>
   </div>
 </div>
@@ -94,17 +197,6 @@
     <h2>Shop Recipes</h2>
     <p>Choose your favorite presentation — or get the full bundle with all premium recipes. Each PDF includes exact grams, methods and professional pastry notes.</p>
 
-    <style>
-      .cards{display:grid;grid-template-columns:1fr;gap:16px;margin-top:12px}
-      .card{
-        background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));
-        border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:18px;
-      }
-      .card h3{margin:0 0 6px; font-size:18px}
-      .meta{opacity:.85; margin:6px 0 12px}
-      .price{display:inline-block; font-weight:800; opacity:.95; margin-right:10px}
-    </style>
-
     <div class="cards">
       <!-- Product 1 -->
       <div class="card">
@@ -114,7 +206,7 @@
           <span class="price">$29.99</span>
           <a class="cta" href="https://square.link/u/JB1g8Mhq" target="_blank" rel="noopener">Buy Now</a>
         </div>
-        <p style="opacity:.8;margin-top:8px"><em>PDF delivered via email after purchase.</em></p>
+        <p style="opacity:.85;margin-top:8px"><em>PDF delivered via email after purchase.</em></p>
       </div>
 
       <!-- Product 2 -->
@@ -125,7 +217,7 @@
           <span class="price">$12.99</span>
           <a class="cta" href="https://square.link/u/kg4esfNT" target="_blank" rel="noopener">Buy Now</a>
         </div>
-        <p style="opacity:.8;margin-top:8px"><em>PDF delivered via email after purchase.</em></p>
+        <p style="opacity:.85;margin-top:8px"><em>PDF delivered via email after purchase.</em></p>
       </div>
 
       <!-- Product 3: Bundle -->
@@ -136,7 +228,7 @@
           <span class="price">$39.99</span>
           <a class="cta" href="https://square.link/u/kuP21A9B" target="_blank" rel="noopener">Buy Bundle</a>
         </div>
-        <p style="opacity:.8;margin-top:8px"><em>All PDFs delivered via email after purchase.</em></p>
+        <p style="opacity:.85;margin-top:8px"><em>All PDFs delivered via email after purchase.</em></p>
       </div>
     </div>
 
@@ -174,5 +266,6 @@
 <footer>
   © 2025 Le Sucre — All rights reserved
 </footer>
+
 </body>
 </html>
