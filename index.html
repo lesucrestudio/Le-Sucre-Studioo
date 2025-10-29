@@ -5,214 +5,114 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Le Sucre — Signature Recipe Shop</title>
 
-<!-- Single font site-wide -->
+<!-- Single font for the whole site -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
   :root{
     --bg:#fff8f2; --panel:#fff3ea; --panel-2:#fff7f2;
     --ink:#4e362d; --ink-soft:#7a5b4d;
-    --straw:#ff6b81; --straw-2:#ff8fa3; --straw-3:#ffb3c1;
-    --choco:#7b4b39;
-    --rose-2:#ffe6ec; --line:#e9d8cd; --chip:#fbeeed;
-    --glow:0 8px 24px rgba(199,117,106,.15);
-    --glow-2:0 4px 16px rgba(199,117,106,.12);
+    --straw:#ff6b81; --straw-2:#ff8fa3; --rose-2:#ffe6ec;
+    --line:#e9d8cd; --chip:#fbeeed;
     --radius:16px; --radius-lg:22px;
+    --shadow:0 8px 24px rgba(199,117,106,.15);
+    --shadow-2:0 4px 16px rgba(199,117,106,.12);
   }
 
-  *{box-sizing:border-box;margin:0;padding:0;font-family:'Playfair Display',serif}
-  html,body{height:100%}
+  /* Reset + one font everywhere */
+  *{box-sizing:border-box;font-family:'Playfair Display',serif}
+  html,body{margin:0}
+  img,svg{max-width:100%;height:auto;display:block}
 
   body{
-    color:var(--ink); line-height:1.6; position:relative;
-    background:
+    color:var(--ink); line-height:1.6; background:
       radial-gradient(1200px 600px at 10% -10%, rgba(255,107,129,.07), transparent 60%),
       radial-gradient(900px 600px at 110% 0%, rgba(255,232,236,.9), transparent 70%),
       linear-gradient(180deg,#fffaf6,var(--bg) 40%,#fff6f1 100%);
   }
 
   a{color:inherit;text-decoration:none}
-  .container{max-width:980px;margin:0 auto;padding:0 20px}
+  /* NARROWER container: perfect for phones */
+  .container{max-width:680px;margin:0 auto;padding:0 14px}
 
-  /* Floating strawberry "confetti" */
-  .float-icons{position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.9}
-  .float-icons span{position:absolute;font-size:20px;filter:drop-shadow(0 4px 8px rgba(199,117,106,.18));
-    animation:rise 13s linear infinite, sway 6s ease-in-out infinite}
-  .float-icons span:nth-child(1){left:8%; bottom:-12%; animation-delay:.1s,.8s}
-  .float-icons span:nth-child(2){left:22%;bottom:-18%; animation-delay:1.8s,.3s}
-  .float-icons span:nth-child(3){left:40%;bottom:-16%; animation-delay:2.6s,1.1s}
-  .float-icons span:nth-child(4){left:58%;bottom:-14%; animation-delay:4.2s,.5s}
-  .float-icons span:nth-child(5){left:74%;bottom:-20%; animation-delay:5.9s,1.3s}
-  .float-icons span:nth-child(6){left:88%;bottom:-18%; animation-delay:7.1s,.9s}
-  @keyframes rise{from{transform:translateY(0)}to{transform:translateY(-130vh)}}
-  @keyframes sway{50%{transform:translateX(12px) rotate(4deg)}}
-
-  /* Topbar with glass & scroll glow */
   .topbar{
-    position:sticky; top:0; z-index:20;
-    background:rgba(255,247,242,.75); backdrop-filter:saturate(1.3) blur(10px);
+    position:sticky;top:0;z-index:10;background:rgba(255,247,242,.85);
+    -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
     border-bottom:1px solid var(--line);
-    transition:box-shadow .25s ease;
   }
-  .topbar.scrolled{box-shadow:0 10px 30px rgba(199,117,106,.12)}
-  nav{display:flex;align-items:center;gap:12px;padding:12px 14px}
-  .brand-wrap{display:flex;align-items:center;gap:12px}
-
-  /* Animated SVG logo — hand-drawn effect + shimmer */
-  .logo{
-    width:176px; height:40px; display:block;
-    filter:drop-shadow(0 2px 10px rgba(255,107,129,.15));
-  }
-  .logo__stroke{
-    fill:none; stroke:#b34f5d; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round;
-    stroke-dasharray:900; stroke-dashoffset:900; animation:logo-draw 2.4s ease forwards .1s;
-  }
-  .logo__fill{ fill:#b34f5d; opacity:0; animation:logo-fill .9s ease forwards 2.2s }
-  .logo__shine{
-    fill: url(#shine); opacity:0; animation:logo-shine 2.2s ease forwards 2.4s
-  }
-  @keyframes logo-draw{to{stroke-dashoffset:0}}
-  @keyframes logo-fill{to{opacity:1}}
-  @keyframes logo-shine{0%{opacity:0} 20%{opacity:1} 100%{opacity:0}}
+  nav{display:flex;align-items:center;gap:10px;padding:10px 8px}
+  .brand{font-weight:800;letter-spacing:.4px;color:#a24b57}
 
   .pill{
-    padding:10px 14px; border-radius:999px; font-weight:700;
+    padding:9px 12px;border-radius:999px;font-weight:700;
     background:linear-gradient(180deg,#fff7f2,var(--panel-2));
     border:1px solid var(--line); color:var(--ink);
-    box-shadow:var(--glow-2); transition:transform .12s ease, box-shadow .2s ease, border-color .2s ease;
+    box-shadow:var(--shadow-2); white-space:nowrap; font-size:14px;
   }
-  .pill:hover{transform:translateY(-1px); border-color:#f2cdd2; box-shadow:0 0 0 4px rgba(255,107,129,.12)}
   .pill.buy{
-    margin-left:auto;
-    background:linear-gradient(90deg,var(--straw),var(--straw-2));
+    margin-left:auto;background:linear-gradient(90deg,var(--straw),var(--straw-2));
     color:#fff; box-shadow:0 10px 28px rgba(255,107,129,.28), inset 0 0 18px rgba(255,255,255,.35)
   }
-  .pill.buy:hover{transform:translateY(-2px)}
 
-  /* Hero with parallax frosting */
-  header{margin:32px auto 0}
+  header{margin:20px auto 0}
   .hero{
-    position:relative; border:1px solid var(--line);
-    border-radius:24px; overflow:hidden; box-shadow:var(--glow);
+    border:1px solid var(--line); border-radius:var(--radius-lg);
     background:radial-gradient(120% 120% at 50% -10%, #ffe8ef 0%, #ffece2 45%, #fff 70%);
-    isolation:isolate;
+    box-shadow:var(--shadow); overflow:hidden;
   }
-  .hero__frosting{
-    position:absolute; inset:-60% -20% auto -20%; height:180%;
-    background:
-      radial-gradient(50% 40% at 10% 20%, rgba(255,255,255,.65), transparent 60%),
-      radial-gradient(50% 40% at 60% 10%, rgba(255,255,255,.55), transparent 60%),
-      radial-gradient(60% 50% at 80% 20%, rgba(255,255,255,.45), transparent 60%);
-    transform:translateY(var(--parallax,0px));
-    transition:transform .08s linear;
-    pointer-events:none;
-    mix-blend-mode:soft-light;
-  }
-  .hero__scan{position:absolute; inset:0; pointer-events:none;
-    background:linear-gradient(to bottom, transparent 0 40%, rgba(255,255,255,.5) 40% 60%, transparent 60% 100%);
-    animation:scan 7s linear infinite; mix-blend-mode:screen}
-  @keyframes scan{0%{transform:translateY(-100%)}100%{transform:translateY(100%)}}
-  .hero-inner{padding:38px 20px 28px; text-align:center}
-  h1{font-size:38px; color:#b34f5d; font-weight:800; letter-spacing:.5px}
-  .sub{color:var(--ink-soft); max-width:720px; margin:8px auto 0}
+  .hero-inner{padding:26px 14px;text-align:center}
+  h1{font-size:28px;margin:0;color:#b34f5d;font-weight:800;letter-spacing:.5px}
+  .sub{color:var(--ink-soft);opacity:.95;margin:6px 0 0;font-size:15px}
 
-  main{margin:28px auto}
+  main{margin:22px auto}
   section{
     background:linear-gradient(180deg,var(--panel),var(--panel-2));
-    border:1px solid var(--line); border-radius:20px; padding:24px; margin-bottom:20px; box-shadow:var(--glow-2);
+    border:1px solid var(--line); border-radius:var(--radius);
+    padding:18px; margin-bottom:14px; box-shadow:var(--shadow-2);
   }
-  h2{font-size:22px; color:#a24b57; position:relative; padding-left:38px; margin-bottom:6px}
-  h2::before{content:"🍓"; position:absolute; left:0; top:1px; font-size:20px; animation:pop 3s ease-in-out infinite}
-  #about h2::before{content:"🍫"} #contact h2::before{content:"🍓"}
-  @keyframes pop{50%{transform:translateY(-2px)}}
+  h2{font-size:20px; color:#a24b57; margin:0 0 8px; position:relative; padding-left:30px}
+  h2::before{content:"🍓"; position:absolute; left:0; top:2px; font-size:18px}
+  #about h2::before{content:"🍫"}
 
-  /* Product cards with cream hover & focus ring */
-  .cards{display:grid; grid-template-columns:1fr; gap:16px; margin-top:14px}
-  @media (min-width:860px){ .cards{grid-template-columns:1fr 1fr 1fr} }
+  .cards{display:grid;grid-template-columns:1fr;gap:12px;margin-top:10px}
+  /* stays narrow on tablets; only 2 columns on wider screens */
+  @media (min-width:820px){ .cards{grid-template-columns:1fr 1fr} }
+
   .card{
-    position:relative; background:linear-gradient(180deg,#fff,var(--rose-2));
-    border:1px solid var(--line); border-radius:18px; padding:18px; box-shadow:var(--glow-2);
-    transition:transform .15s ease, box-shadow .2s ease;
-    overflow:hidden;
+    background:linear-gradient(180deg,#fff,var(--rose-2));
+    border:1px solid var(--line); border-radius:14px; padding:14px; box-shadow:var(--shadow-2)
   }
-  .card:focus-within{outline:none; box-shadow:0 0 0 6px rgba(255,107,129,.16)}
-  .card:hover{transform:translateY(-3px); box-shadow:0 16px 32px rgba(255,107,129,.18)}
-  .card::after{
-    content:""; position:absolute; inset:-30% -10% auto -10%; height:70%;
-    background:radial-gradient(40% 40% at 20% 20%, rgba(255,255,255,.7), transparent 60%);
-    opacity:.0; transition:opacity .25s ease; pointer-events:none;
-  }
-  .card:hover::after{opacity:.5}
-
-  .card h3{margin:0 0 6px; font-size:18px; color:#a24b57; font-weight:700}
-  .meta{opacity:.9; margin:6px 0 12px; color:var(--ink-soft)}
-  .price{font-weight:800; color:#8c4a3a; margin-right:10px}
+  .card h3{margin:0 0 6px;font-size:16px;color:#a24b57}
+  .meta{opacity:.9;margin:6px 0 10px;color:var(--ink-soft);font-size:14px}
+  .price{font-weight:800;color:#8c4a3a;margin-right:8px}
   .cta{
-    display:inline-block; margin-top:6px; padding:10px 16px; border-radius:12px;
-    background:linear-gradient(90deg,var(--straw),var(--straw-2)); color:#fff; font-weight:800;
-    box-shadow:0 8px 20px rgba(255,107,129,.22); transition:transform .12s ease, box-shadow .2s ease;
+    display:inline-block;margin-top:6px;padding:10px 14px;border-radius:12px;
+    background:linear-gradient(90deg,var(--straw),var(--straw-2));color:#fff;font-weight:800;
+    box-shadow:0 8px 20px rgba(255,107,129,.22);font-size:14px
   }
-  .cta:hover{transform:translateY(-2px); box-shadow:0 12px 28px rgba(255,107,129,.28)}
-  .cta:focus{outline:3px solid #ffb6c5; outline-offset:3px}
 
-  /* Marquee */
-  .marq{overflow:hidden; border-block:1px solid var(--line); margin:18px 0}
-  .marq .row{display:flex; gap:18px; white-space:nowrap; padding:8px 0; animation:slide 20s linear infinite}
+  .marq{overflow:hidden;border-block:1px solid var(--line);margin:14px 0}
+  .marq .row{display:flex;gap:14px;white-space:nowrap;padding:8px 0;animation:slide 18s linear infinite}
   @keyframes slide{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-  .chip{
-    padding:7px 12px;border-radius:999px;border:1px solid #f2cdd2;
-    background:linear-gradient(180deg, var(--chip), #fff);
-    color:#a14a58; font-size:14px; box-shadow:0 2px 8px rgba(199,117,106,.10)
-  }
+  .chip{padding:6px 10px;border-radius:999px;border:1px solid #f2cdd2;background:linear-gradient(180deg,var(--chip),#fff);color:#a14a58;font-size:13px}
 
-  /* Footer */
-  footer{text-align:center; padding:26px; color:#8b6a5d}
+  footer{text-align:center;padding:18px;color:#8b6a5d}
 
-  /* Reduced motion friendliness */
-  @media (prefers-reduced-motion: reduce){
-    .float-icons span, .marq .row, .hero__scan{animation:none}
+  /* prevent any overflow on tiny screens */
+  @media (max-width:360px){
+    .brand{font-size:16px}
+    .pill{padding:8px 10px;font-size:13px}
+    h1{font-size:26px}
+    .sub{font-size:14px}
   }
 </style>
 </head>
 <body>
 
-<!-- Floating confetti -->
-<div class="float-icons" aria-hidden="true">
-  <span>🍓</span><span>🍫</span><span>🍓</span><span>🍫</span><span>🍓</span><span>🍫</span>
-</div>
-
-<!-- Topbar -->
-<div class="topbar" id="topbar">
+<div class="topbar">
   <div class="container">
-    <nav aria-label="Main">
-      <div class="brand-wrap" aria-label="Le Sucre logo and brand">
-        <!-- Animated SVG logo -->
-        <svg class="logo" viewBox="0 0 520 120" role="img" aria-labelledby="logoTitle logoDesc">
-          <title id="logoTitle">Le Sucre</title>
-          <desc id="logoDesc">Hand-drawn signature wordmark with animated stroke and shimmer.</desc>
-          <defs>
-            <linearGradient id="shine" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
-              <stop offset="35%" stop-color="#ffffff" stop-opacity=".8"/>
-              <stop offset="65%" stop-color="#ffffff" stop-opacity="0"/>
-            </linearGradient>
-            <clipPath id="wordClip">
-              <text x="8" y="78" font-size="74" font-weight="800" letter-spacing="1" fill="#000">LE SUCRE</text>
-            </clipPath>
-          </defs>
-
-          <!-- Stroke path (stylized underline swirl) -->
-          <path class="logo__stroke"
-            d="M10,96 C120,60 220,126 330,86 C398,62 455,36 510,46"
-          />
-
-          <!-- Fill text -->
-          <text class="logo__fill" x="8" y="78" font-size="74" font-weight="800" letter-spacing="1">LE SUCRE</text>
-
-          <!-- Shimmer moving across the letters -->
-          <rect class="logo__shine" clip-path="url(#wordClip)" x="-40" y="28" width="220" height="70"/>
-        </svg>
-      </div>
+    <nav>
+      <div class="brand">LE SUCRE</div>
       <a class="pill" href="#buy">Shop</a>
       <a class="pill" href="#about">About</a>
       <a class="pill buy" href="#contact">Contact</a>
@@ -220,11 +120,8 @@
   </div>
 </div>
 
-<!-- Hero -->
 <header class="container">
-  <div class="hero" id="hero">
-    <div class="hero__frosting" aria-hidden="true"></div>
-    <div class="hero__scan" aria-hidden="true"></div>
+  <div class="hero">
     <div class="hero-inner">
       <h1>LE SUCRE</h1>
       <p class="sub">Modern dessert recipes for pastry chefs & beginners 🍰🧁</p>
@@ -232,75 +129,64 @@
   </div>
 </header>
 
-<main class="container" id="main">
-  <!-- Shop -->
-  <section id="buy" aria-labelledby="buy-title">
-    <h2 id="buy-title">Shop Recipes</h2>
-    <p>Choose your favorite presentation — or get the full bundle with all premium recipes. Each PDF includes exact grams, methods and professional pastry notes.</p>
+<main class="container">
+  <section id="buy">
+    <h2>Shop Recipes</h2>
+    <p class="meta" style="margin:0 0 8px">Choose your favorite presentation — or get the full bundle with all premium recipes. Each PDF includes exact grams, methods and professional pastry notes.</p>
 
     <div class="cards">
-      <!-- Cheesecakes -->
-      <article class="card" aria-label="Signature Cheesecakes PDF">
+      <!-- Product 1 -->
+      <div class="card">
         <h3>Signature Cheesecakes — PDF</h3>
-        <p class="meta">Three elegant cheesecake recipes: Sunny Peanut Apricot · Autumn Apple · Cherry Garden. Detailed, professional and beautiful.</p>
+        <p class="meta">Three elegant cheesecake recipes: Sunny Peanut Apricot · Autumn Apple · Cherry Garden.</p>
         <div>
           <span class="price">$15.99</span>
           <a class="cta" href="https://square.link/u/moDt6l55" target="_blank" rel="noopener">Buy Now</a>
         </div>
         <p class="meta"><em>PDF delivered via email after purchase.</em></p>
-      </article>
+      </div>
 
-      <!-- Muffins -->
-      <article class="card" aria-label="Signature Muffins PDF">
+      <!-- Product 2 -->
+      <div class="card">
         <h3>Signature Muffins — PDF</h3>
-        <p class="meta">If you want the recipe for delicious muffins — this one’s for you 🫐🍓. Includes Berry Muffins with crumble & Raspberry Muffins with cocoa and almond flakes.</p>
+        <p class="meta">Berry Muffins with crumble & Raspberry Muffins with cocoa and almond flakes.</p>
         <div>
           <span class="price">$7.99</span>
           <a class="cta" href="https://square.link/u/HuqyggVe" target="_blank" rel="noopener">Buy Now</a>
         </div>
         <p class="meta"><em>PDF delivered via email after purchase.</em></p>
-      </article>
+      </div>
 
-      <!-- Bundle -->
-      <article class="card" aria-label="Full Bundle PDFs">
+      <!-- Product 3 -->
+      <div class="card">
         <h3>Full Bundle — Both PDFs</h3>
-        <p class="meta">Get the full Le Sucre experience — all three cheesecakes & both muffin recipes in one elegant bundle.</p>
+        <p class="meta">All three cheesecakes + both muffin recipes in one elegant bundle.</p>
         <div>
           <span class="price">$19.99</span>
           <a class="cta" href="https://square.link/u/JahwfwBu" target="_blank" rel="noopener">Buy Bundle</a>
         </div>
         <p class="meta"><em>All PDFs delivered via email after purchase.</em></p>
-      </article>
+      </div>
     </div>
 
-    <div class="marq" aria-hidden="true" style="margin-top:16px;">
+    <div class="marq" aria-hidden="true" style="margin-top:12px;">
       <div class="row">
-        <span class="chip">Pies</span>
-        <span class="chip">Cheesecakes</span>
-        <span class="chip">Cakes</span>
-        <span class="chip">Cookies</span>
-        <span class="chip">Muffins</span>
-        <span class="chip">Chocolate</span>
-        <span class="chip">Pies</span>
-        <span class="chip">Cheesecakes</span>
-        <span class="chip">Cakes</span>
-        <span class="chip">Cookies</span>
-        <span class="chip">Muffins</span>
-        <span class="chip">Chocolate</span>
+        <span class="chip">Pies</span><span class="chip">Cheesecakes</span><span class="chip">Cakes</span>
+        <span class="chip">Cookies</span><span class="chip">Muffins</span><span class="chip">Chocolate</span>
+        <span class="chip">Pies</span><span class="chip">Cheesecakes</span><span class="chip">Cakes</span>
+        <span class="chip">Cookies</span><span class="chip">Muffins</span><span class="chip">Chocolate</span>
       </div>
     </div>
   </section>
 
-  <!-- About -->
-  <section id="about" aria-labelledby="about-title">
-    <h2 id="about-title">About Le Sucre</h2>
-    <p>Le Sucre Studio was founded by <strong>Lola Deineha</strong> — a pastry artist passionate about combining European precision with modern aesthetics. Our digital recipe collections are designed to inspire, teach and help pastry lovers create professional-level desserts at home or in their own studios.</p>
-    <p>Every Le Sucre recipe is a reflection of balance, texture and emotion. Whether you’re a beginner or a working pastry chef, you’ll find recipes that elevate your craft with flavor, harmony and visual beauty. If you’ve completed your purchase, please send us your email and payment confirmation — we’ll personally deliver the PDF recipe files straight to your inbox with care and love 💌✨</p>
+  <section id="about">
+    <h2>About Le Sucre</h2>
+    <p class="meta">Le Sucre Studio was founded by <strong>Lola Deineha</strong> — a pastry artist blending European precision with modern aesthetics. Digital recipe collections designed to inspire, teach and help pastry lovers create professional-level desserts at home or in their studios.</p>
+    <p class="meta">If you’ve completed your purchase, please send your email and payment confirmation — we’ll deliver the PDF recipe files straight to your inbox with care and love 💌✨</p>
   </section>
 
-  <!-- Contact -->
-  <section id="contact" aria-labelledby="contact-title">
-    <h2 id="contact-title">Contact</h2>
+  <section id="contact">
+    <h2>Contact</h2>
     <p><a class="cta" href="mailto:info.lesucre.studio@gmail.com">Email Us</a></p>
     <p><a class="cta" href="https://www.instagram.com/le.sucre.studio" target="_blank" rel="noopener">Instagram @le.sucre.studio</a></p>
   </section>
@@ -310,47 +196,5 @@
   © 2025 Le Sucre — All rights reserved
 </footer>
 
-<script>
-  // Sticky topbar glow and section highlighting
-  const topbar = document.getElementById('topbar');
-  const hero = document.getElementById('hero');
-
-  const onScroll = () => {
-    if (window.scrollY > 6) topbar.classList.add('scrolled'); else topbar.classList.remove('scrolled');
-
-    // Parallax frosting (tiny movement)
-    const y = Math.min(18, window.scrollY * 0.06);
-    hero?.style.setProperty('--parallax', y + 'px');
-  };
-  document.addEventListener('scroll', onScroll, {passive:true});
-  onScroll();
-
-  // Smooth-scroll for in-page links (accessibility-friendly)
-  document.querySelectorAll('a[href^="#"]').forEach(a=>{
-    a.addEventListener('click', e=>{
-      const id = a.getAttribute('href').slice(1);
-      const el = document.getElementById(id);
-      if(!el) return;
-      e.preventDefault();
-      el.scrollIntoView({behavior:'smooth', block:'start'});
-      history.pushState(null, '', '#'+id);
-    });
-  });
-
-  // Logo shimmer sweep (animate rect across the text)
-  const logoRect = document.querySelector('.logo__shine');
-  if (logoRect){
-    let x = -60, w = 260;
-    const sweep = () => {
-      x += 3;
-      if (x > 540) x = -w;
-      logoRect.setAttribute('x', x);
-      requestAnimationFrame(sweep);
-    };
-    // respect reduced motion
-    const mq = window.matchMedia('(prefers-reduced-motion: reduce)');
-    if (!mq.matches) requestAnimationFrame(sweep);
-  }
-</script>
 </body>
 </html>
